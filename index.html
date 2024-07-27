@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic Army</title>
+    <meta name="description" content="Join the Magic Army, an enlightened community of magic enthusiasts!">
+    <meta name="keywords" content="Magic Army, Magic, Community, Enthusiasts, Discord">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,9 +17,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: space-between;
+            min-height: 100vh;
             text-align: center;
+            animation: fade-in 1s ease-in-out;
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         header {
             background: rgba(0, 0, 0, 0.8);
@@ -27,7 +38,7 @@
         }
         header h1 {
             margin: 0;
-            font-size: 3em;
+            font-size: calc(2em + 1vw);
             letter-spacing: 2px;
         }
         main {
@@ -40,15 +51,16 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
+            font-size: calc(1em + 0.5vw);
             margin: 20px;
             cursor: pointer;
             border: none;
             border-radius: 30px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .join-button:hover {
             background-color: #e43a49;
+            transform: scale(1.05);
         }
         .popup {
             display: none;
@@ -101,27 +113,27 @@
             width: 100%;
             padding: 10px;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
-            position: absolute;
-            bottom: 0;
-            text-align: center;
+            font-size: 0.8em;
         }
-        footer a {
-            color: #ff4b5c;
-            text-decoration: none;
+        footer p {
+            margin: 0;
         }
-        footer a:hover {
-            text-decoration: underline;
+        @media (max-width: 600px) {
+            .join-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Magic Army</h1>
-    </header>
-    <main>
-        <p>Join the Magic Army, an enlightened community of magic enthusiasts!</p>
-        <button class="join-button" onclick="openPopup()">How to Join</button>
-    </main>
+<header>
+    <h1>Magic Army</h1>
+</header>
+<main>
+    <p>Join the Magic Army, an enlightened community of magic enthusiasts!</p>
+    <button class="join-button" onclick="openPopup()">How to Join</button>
+</main>
 
     <div id="popup" class="popup">
         <div class="popup-content">
@@ -136,26 +148,28 @@
             </ul>
         </div>
     </div>
+</div>
 
-    <footer>
-        <p>If you want to contribute to this website, contribute <a href="https://github.com/MagicArmy/magicarmy.us">here</a>.</p>
-    </footer>
+<footer>
+    <p>© 2024 Magic Army. All rights reserved.</p>
+    <p>Created by the Magic Army team. <a href="https://github.com/MagicArmy/magicarmy.us" target="_blank">Contribute on GitHub</a></p>
+</footer>
 
-    <script>
-        function openPopup() {
-            document.getElementById('popup').style.display = 'block';
+<script>
+    function openPopup() {
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        var popup = document.getElementById('popup');
+        if (event.target == popup) {
+            popup.style.display = 'none';
         }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            var popup = document.getElementById('popup');
-            if (event.target == popup) {
-                popup.style.display = 'none';
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
